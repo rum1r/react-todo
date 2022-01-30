@@ -13,6 +13,11 @@ export const App = () => {
     setIncompleteTodos(newTodos);
     setTodoText("");
   };
+  const onClickDelete = (index) => {
+    const newTodos = [...incompleteTodos];
+    newTodos.splice(index, 1);
+    setIncompleteTodos(newTodos);
+  };
   return (
     <>
       <div className="input-area">
@@ -31,7 +36,13 @@ export const App = () => {
               <li key={index} className="list-row">
                 <p>{todo}</p>
                 <button>完了</button>
-                <button>削除</button>
+                <button
+                  onClick={() => {
+                    onClickDelete(index);
+                  }}
+                >
+                  削除
+                </button>
               </li>
             );
           })}
